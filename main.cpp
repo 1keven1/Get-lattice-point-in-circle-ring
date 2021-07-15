@@ -2,6 +2,8 @@
 #include <vector>
 #include <assert.h>
 
+#define SQRT2 1.41421356
+
 struct Point2i
 {
 	Point2i()
@@ -19,6 +21,7 @@ struct Point2i
 	int x, y;
 };
 
+// 获取给定圆内的整数点
 std::vector<Point2i> GetAllPointInCircle(const Point2i& center, const int& radius)
 {
 	assert(radius > 0);
@@ -30,7 +33,7 @@ std::vector<Point2i> GetAllPointInCircle(const Point2i& center, const int& radiu
 		points.push_back(Point2i(i, 0));
 	}
 	// y = x
-	int maxI = floor(radius / sqrt(2));
+	int maxI = floor(radius / SQRT2);
 	for (int i = 1; i <= maxI; i++)
 	{
 		points.push_back(Point2i(i, i));
@@ -98,7 +101,7 @@ std::vector<Point2i> GetAllPointInCircle(const Point2i& center, const int& radiu
 	return points;
 }
 
-
+// 获取给定圆环内的整数点
 std::vector<Point2i> GetAllPointInRing(const Point2i& center, const int& radiusSmall, const int& radiusBig)
 {
 	assert(radiusBig > radiusSmall);
@@ -112,8 +115,8 @@ std::vector<Point2i> GetAllPointInRing(const Point2i& center, const int& radiusS
 	}
 
 	// y = x上的
-	int maxXSmall = floor(radiusSmall / sqrt(2));
-	int maxXBig = floor(radiusBig / sqrt(2));
+	int maxXSmall = floor(radiusSmall / SQRT2);
+	int maxXBig = floor(radiusBig / SQRT2);
 	for (int i = maxXSmall + 1; i <= maxXBig; i++)
 	{
 		points.push_back(Point2i(i, i));
