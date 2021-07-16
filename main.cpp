@@ -11,7 +11,7 @@ struct Point2i
 		x = 0;
 		y = 0;
 	}
-	
+
 	Point2i(const int& _x, const int& _y)
 	{
 		x = _x;
@@ -105,7 +105,7 @@ std::vector<Point2i> GetAllPointInCircle(const Point2i& center, const int& radiu
 std::vector<Point2i> GetAllPointInRing(const Point2i& center, const int& radiusSmall, const int& radiusBig)
 {
 	assert(radiusBig > radiusSmall);
-	assert(radiusSmall > 0);
+	assert(radiusSmall >= 0);
 
 	std::vector<Point2i> points;
 	// ×ø±êÖáÉÏµÄ
@@ -219,7 +219,7 @@ int main()
 	std::vector<Point2i> points;
 
 	//points = GetAllPointInCircle(center, radius);
-	points = GetAllPointInRing(center, 12, 14);
+	points = GetAllPointInRing(center, 0, 1);
 
 	for (auto& point : points)
 	{
